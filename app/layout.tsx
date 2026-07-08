@@ -4,7 +4,7 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import { CartProvider } from "../lib/cart-context";
 import { WishlistProvider } from "../lib/wishlist-context";
 import ScrollProgress from "../components/ScrollProgress";
-import ToastContainer from "../components/Toast";
+import { ToastProvider } from "../components/Toast";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -38,12 +38,17 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <body style={{ fontFamily: "var(--font-inter), system-ui, sans-serif" }}>
         <ScrollProgress />
-        <CartProvider>
-          <WishlistProvider>
-            {children}
-            <ToastContainer />
-          </WishlistProvider>
-        </CartProvider>
+        {/*
+          ToastProvider wraps everything so any component (ProductCard,
+          ProductDetailClient, etc.) can call useToast() safely.
+        */}
+        <ToastProvider>
+          <CartProvider>
+            <WishlistProvider>
+              {children}
+            </WishlistProvider>
+          </CartProvider>
+        </ToastProvider>
       </body>
     </html>
   );
