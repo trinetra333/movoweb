@@ -1,23 +1,65 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #050505; /* Slightly darker for more contrast */
-  --bg-card: #111111;
-  /* ... your other variables ... */
+  --bg: #0a0a0a;
+  --bg-card: #141414;
+  --bg-card-hover: #1a1a1a;
+  --border: rgba(255,255,255,0.08);
+  --border-hover: rgba(255,255,255,0.18);
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-glow: rgba(37,99,235,0.35);
+  --text-muted: #6b7280;
+  --text-secondary: #9ca3af;
 }
 
 html, body {
   margin: 0;
   padding: 0;
-  /* Add a subtle radial gradient for depth */
-  background: radial-gradient(circle at 50% 0%, #1a1a1a 0%, var(--bg) 60%);
+  background: var(--bg);
   color: white;
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Premium Selection Color */
+* {
+  box-sizing: border-box;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3a3a;
+}
+
+/* Selection */
 ::selection {
-  background: rgba(37, 99, 235, 0.4); /* Your primary blue */
-  color: #ffffff;
-  text-shadow: 0 0 8px rgba(37, 99, 235, 0.6);
+  background: rgba(37,99,235,0.3);
+  color: white;
+}
+
+/* Focus visible */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Smooth image rendering */
+img {
+  image-rendering: -webkit-optimize-contrast;
 }
